@@ -8,9 +8,9 @@ class App extends Component {
     tasks: [
       {
         id: 0,
-        text: "zagrać wreszcie w Wiedźmina 3",
-        date: "2021-08-08",
-        important: false,
+        text: "pojechać na retrit",
+        date: "2021-08-10",
+        important: true,
         active: true,
         finishDate: null,
       },
@@ -18,7 +18,7 @@ class App extends Component {
         id: 1,
         text: "posprzątać chatę",
         date: "2021-06-15",
-        important: true,
+        important: false,
         active: true,
         finishDate: null,
       },
@@ -26,7 +26,7 @@ class App extends Component {
         id: 2,
         text: "wykorzystać urlop",
         date: "2021-06-30",
-        important: true,
+        important: false,
         active: true,
         finishDate: null,
       },
@@ -34,11 +34,28 @@ class App extends Component {
   };
 
   deleteTask = (id) => {
-    console.log("d" + id);
+    let tasks = [...this.state.tasks];
+    // const index = tasks.findIndex((task) => task.id === id);
+    // tasks.splice(index, 1);
+    tasks = tasks.filter((task) => task.id !== id);
+
+    this.setState({
+      tasks,
+    });
   };
 
   changeTaskStatus = (id) => {
-    console.log("c" + id);
+    const tasks = [...this.state.tasks];
+    tasks.forEach((task) => {
+      if (task.id === id) {
+        task.active = false;
+        task.finishDate = new Date().getTime();
+      }
+    });
+
+    this.setState({
+      tasks,
+    });
   };
 
   render() {
