@@ -2,6 +2,11 @@ body {
   text-align: center;
 }
 
+.App {
+  padding: 15px;
+  text-align: center;
+}
+
 button {
   cursor: pointer;
 }
